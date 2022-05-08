@@ -22,3 +22,6 @@ Papers:
     A. Sommariva and M. Vianello, RBF moment computation and meshless cubature on general polygonal regions 
 
 # Additions
+
+## Radial Basis Functions (RBF)
+https://en.wikipedia.org/wiki/Radial_basis_function
