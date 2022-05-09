@@ -1,6 +1,4 @@
 based on https://github.com/alvisesommariva/RBFCUB_2021
-Work is focused on [Radial Basis Functions - RBF](https://en.wikipedia.org/wiki/Radial_basis_function) which are not directly usable for Beam Cross Area as
-r^2 which is tricky part is not RBF.
 
 # README from source
 
