@@ -72,12 +72,10 @@ flag=0;
 
 L1_vertices={}; L1_integrals_L=[]; L1_integrals_H=[]; L1_errors=[];
 
-% If input is not a polyshape determines its polyshape "PG".
-S=class(vertices);
-if strcmp(S,'polyshape') == 0
-    XV=vertices(:,1); YV=vertices(:,2); PG=polyshape(XV,YV);
-else
+if isa(vertices,'polyshape')
     PG=vertices;
+else
+    XV=vertices(:,1); YV=vertices(:,2); PG=polyshape(XV,YV);
 end
 
 tri=triangulation(PG);
@@ -96,7 +94,7 @@ IL=sum(L1_integrals_L); IH=sum(L1_integrals_H); AE=abs(IL-IH);
 
 iters=1;
 
-while (AE >= tol) | (AE >= tol*abs(IH))
+while (AE >= tol) || (AE >= tol*abs(IH))
     
     N=length(L1_integrals_L);
     
@@ -104,13 +102,13 @@ while (AE >= tol) | (AE >= tol*abs(IH))
     if N > max_triangles, flag=1; return; end
     
     % Determine triangle with worst error.
-    [Ierr_max,kmax]=max(L1_errors);
+    [~,kmax]=max(L1_errors);
     vertices_kmax=L1_vertices{kmax};
     
     % Erase "kmax" triangle from LIST 1
     k_ok=setdiff(1:N,kmax);
     
-    if length(k_ok) > 0
+    if ~isempty(k_ok)
         L1_vertices={L1_vertices{k_ok}};
         L1_integrals_L=L1_integrals_L(k_ok);
         L1_integrals_H=L1_integrals_H(k_ok);
