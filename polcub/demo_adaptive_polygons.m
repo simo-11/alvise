@@ -30,7 +30,7 @@ clear;
 % case 9, f=@(x,y) (1.2*(x+2*y).^2+0.02*(x+2*y).^2+3*(x+2*y)-2).^2
 %--------------------------------------------------------------------------
 
-function_example=2;
+function_example=10;
 
 
 %--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ function_example=2;
 % case 2, non convex and non simply connected domain.
 %--------------------------------------------------------------------------
 
-domain_example=2;
+domain_example=3;
 
 %--------------------------------------------------------------------------
 % tri_type : in case a triangle must be subdivided, we use
@@ -56,7 +56,7 @@ tri_type=2;
 [g,gstr]=define_function(function_example);
 vertices=define_domain(domain_example);
 
-tol=10^(-12);
+tol=10^(-4);
 
 tic;
 [IH,IL,flag,iters,PG,tri_type]=cub_polygon_adaptive(vertices,g,tol,...
@@ -100,15 +100,6 @@ fprintf('\n \n');
 % ... plot domain ...
 plot(PG);
 
-
-
-
-
-
-
-
-
-
 function [f,fs]=define_function(example)
 
 switch example
@@ -139,26 +130,16 @@ switch example
     case 9
         f=@(x,y) (1.2*(x+2*y).^2+0.02*(x+2*y).^2+3*(x+2*y)-2).^2;
         fs='(1.2*(x+2*y).^2+0.02*(x+2*y).^2+3*(x+2*y)-2).^2';
+    case 10
+        f=@(~,~) 1;
+        fs='1';
 end
 
-
-
-
-
-
-
-
-
-
 function vertices=define_domain(example)
-
-
 switch example
-    
     case 1 % simply connected domain
         vertices=[0.1 0; 0.7 0.2; 1 0.5; 0.75 0.85; 0.5 1; 0 0.25; ...
             0.5 1; 0 0.25; 0.1 0];
-        
     case 2 % domain with holes (using polyshape)
         Nsides=10;
         th=linspace(0,2*pi,Nsides); th=(th(1:end-1))';
@@ -168,14 +149,14 @@ switch example
         polygon2=2+[cos(th) sin(th)]; P2=polyshape(polygon2);
         % third polygon.
         polygon3=0.5*[cos(th) sin(th)]; P3=polyshape(polygon3);
-        
         P=subtract(P1,P3);
         P=union(P,P2);
-        
         [XX, YY] = boundary(P);
         vertices=[XX YY];
-        
+    case 3 % Rectangle
+        h=0.012377;w=0.0032024;% Princeton beam
+        hw=w/2;
+        hh=h/2;
+        vertices = polyshape([-hw hw hw -hw], ...
+                [-hh -hh hh hh]);
 end
-
-
-

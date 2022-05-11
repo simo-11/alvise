@@ -109,7 +109,7 @@ while (AE >= tol) || (AE >= tol*abs(IH))
     k_ok=setdiff(1:N,kmax);
     
     if ~isempty(k_ok)
-        L1_vertices={L1_vertices{k_ok}};
+        L1_vertices=L1_vertices(k_ok);
         L1_integrals_L=L1_integrals_L(k_ok);
         L1_integrals_H=L1_integrals_H(k_ok);
         L1_errors=L1_errors(k_ok);
@@ -233,7 +233,7 @@ switch tri_type
         Lsides(2)=norm(OC-OA); % AC
         Lsides(3)=norm(OC-OB); % BC
         
-        [Lsidesmax,imax]=max(Lsides);
+        [~,imax]=max(Lsides);
         
         % .... triangle data ....
         
