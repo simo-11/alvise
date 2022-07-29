@@ -6,7 +6,7 @@ Short notes are collected on this page, see more details in each directory
 
 ## polcub
 uses matlab polyshape to define geometry and subdivides triangles until rquired precision is met.
-This is used in [cross-section](https://github.com/simo-11/ancf-rhs/tree/master/cross-section). 
+[cub_polygon_adaptive.m](polcub/cub_polygon_adaptive.m) is used in [cross-section](https://github.com/simo-11/ancf-rhs/tree/master/cross-section). 
 See also [cross-section in ancf main entry](https://github.com/simo-11/ancf-rhs)
 
 ## rbfcub
