@@ -5,6 +5,12 @@ https://www.math.unipd.it/~alvise/software.html
 Short notes are collected on this page, see more details in each directory
 
 ## polcub
+uses matlab polyshape to define geometry and subdivides triangles until rquired precision is met.
+[cub_polygon_adaptive.m](polcub/cub_polygon_adaptive.m) is modified slightly and used in [cross-section](https://github.com/simo-11/ancf-rhs/tree/master/cross-section). 
+See also [cross-section in ancf main entry](https://github.com/simo-11/ancf-rhs)
+
+## splcub
+[paper](https://www.math.unipd.it/~marcov/pdf/splinecatch.pdf)
 
 ## rbfcub
 based on https://github.com/alvisesommariva/RBFCUB_2021
