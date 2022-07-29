@@ -10,7 +10,14 @@ uses matlab polyshape to define geometry and subdivides triangles until rquired 
 See also [cross-section in ancf main entry](https://github.com/simo-11/ancf-rhs)
 
 ## splcub
+Software computes algebraic cubature rules with fixed degree of precision over spline-curvilinear polygons. It includes an in-domain routine incurvpolygon.m that determines if a point is inside one of such regions.
+The cubature formula has all points inside the domain as well as positive weights.
 [paper](https://www.math.unipd.it/~marcov/pdf/splinecatch.pdf)
+
+## polygauss
+Software computes algebraic cubature rules with fixed degree of precision over general polygons (convex or not convex, connected or disconnected, simply or not simply connected). It needs Matlab-built in polyshape environment.
+[paper](https://www.math.unipd.it/~marcov/pdf/polygons.pdf)
+
 
 ## rbfcub
 based on https://github.com/alvisesommariva/RBFCUB_2021
